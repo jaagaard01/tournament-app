@@ -1,5 +1,5 @@
-import Background from "../components/login/Background"; // Adjust the import path as needed
-import CreateAccount from "../components/login/CreateAccount"; // Adjust the import path
+import Background from "../../components/login/Background"; // Adjust the import path as needed
+import CreateAccount from "../../components/login/CreateAccount"; // Adjust the import path
 import React from "react";
 
 const CreateAccountPage: React.FC = () => {
