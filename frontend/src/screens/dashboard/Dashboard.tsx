@@ -5,25 +5,24 @@ import {
   FaMapMarkerAlt,
   FaUserFriends,
 } from "react-icons/fa";
-import { NavLink, Outlet } from "react-router-dom";
-
-import { useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const location = useLocation();
+  const currentLocation = location.pathname.split("/")[2] || "dashboard";
 
   const navItems = [
     {
       id: "dashboard",
       icon: <FaHome className="h-5 w-5" />,
       label: "Dashboard",
-      path: "/",
+      path: "/dashboard",
     },
     {
-      id: "venues",
+      id: "arenas",
       icon: <FaMapMarkerAlt className="h-5 w-5" />,
-      label: "Venues",
-      path: "venues",
+      label: "Arenas",
+      path: "arenas",
     },
     {
       id: "events",
@@ -32,7 +31,7 @@ export default function Dashboard() {
       path: "events",
     },
     {
-      id: "tournamentTypes",
+      id: "tournament-types",
       icon: <FaUserFriends className="h-5 w-5" />,
       label: "Tournament Types",
       path: "tournament-types",
@@ -64,9 +63,8 @@ export default function Dashboard() {
                 key={item.id}
                 to={item.path}
                 className={`flex items-center p-2 space-x-4 border-b-2 border-neutral-700  ${
-                  activeTab === item.id ? "bg-base-300" : ""
+                  currentLocation === item.id ? "bg-base-300" : ""
                 } hover:bg-primary-focus w-full cursor-pointer`}
-                onClick={() => setActiveTab(item.id)}
               >
                 {item.icon}
                 <span>{item.label}</span>

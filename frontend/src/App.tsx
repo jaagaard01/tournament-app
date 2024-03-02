@@ -1,15 +1,17 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
+import Arenas from "./screens/arenas/Arenas";
+import ArenasList from "./screens/arenas/ArenasList";
 import CheckAuth from "./components/auth/CheckAuth";
 import CreateAccountPage from "./screens/auth/CreateAccountPage";
-import Dashboard from "./screens/Dashboard";
-import DashboardContent from "./screens/DashboardContent";
+import CreateArena from "./screens/arenas/CreateArena";
+import Dashboard from "./screens/dashboard/Dashboard";
+import DashboardContent from "./screens/dashboard/DashboardContent";
 import Events from "./screens/events/Events";
 import Login from "./screens/auth/Login";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Settings from "./screens/settings/Settings";
 import TournamentTypes from "./screens/tournamentTypes/TournamentTypes";
-import Venues from "./screens/venues/Venues";
 
 function App() {
   return (
@@ -27,7 +29,10 @@ function App() {
           }
         >
           <Route index element={<DashboardContent />} />
-          <Route path="venues" element={<Venues />} />
+          <Route path="arenas" element={<Arenas />}>
+            <Route index element={<ArenasList />} />
+            <Route path="create" element={<CreateArena />} />
+          </Route>
           <Route path="events" element={<Events />} />
           <Route path="tournament-types" element={<TournamentTypes />} />
           <Route path="settings" element={<Settings />} />
